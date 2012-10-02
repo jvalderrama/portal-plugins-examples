@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/*
+ * Portal App
+ * Copyright (C) 2012 Stackops Technologies
+ */
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <!-- POM Relationships -->
+
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.stackops.portal.plugins</groupId>
+        <artifactId>parent</artifactId>
+        <version>1.0.0-RC1</version>
+        <relativePath>../parent</relativePath>
+    </parent>
+
+    <artifactId>weather</artifactId>
+    <version>1.0.0-RC1</version>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.stackops</groupId>
+            <artifactId>portal-plugin-api</artifactId>
+            <version>1.0.0-RC1</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <!-- ///////////////// -->
+
+    <!-- Build Settings -->
+
+    <packaging>jar</packaging>
+    <build>
+        <finalName>${project.artifactId}-${project.version}</finalName>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+            </plugin>           
+        </plugins>
+    </build>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>2.5</version>
+                <configuration>
+                    <enableRSS>false</enableRSS>
+                    <configLocation>${basedir}/../../portal-checkstyle-5.0.xml</configLocation>
+                    <include>**/*.java</include>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>2.1.2</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>dependencies</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+            <plugin>
+                <groupId>net.sf.doodleproject</groupId>
+                <artifactId>doxygen-maven-plugin</artifactId>
+                <version>2.1</version>
+                <configuration>
+                    <executable>${doxygenExecutable}</executable>
+                    <configurationFile>../../portal-doxygen.conf</configurationFile>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
+
+    <!-- ////////////// -->
+
+    <!-- Project Information -->
+
+    <name>Weather Plugin</name>
+    <description>Custom API weather</description>
+
+    <!-- /////////////////// -->
+
+</project>
